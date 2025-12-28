@@ -5,7 +5,7 @@ function updateTime() {
     let tokyoTime = tokyoElement.querySelector(".time");
     let tokyoCurrent = moment().tz("Asia/Tokyo");
     tokyoDate.innerHTML = tokyoCurrent.format("MMMM Do, YYYY");
-    tokyoTime.innerHTML = tokyoCurrent.format("h:mm:ss [<small>]A[</small>]");
+    tokyoTime.innerHTML = tokyoCurrent.format("h:mm:ss:S [<small>]A[</small>]");
   }
 
   let hongKongElement = document.querySelector("#hong-kong");
@@ -15,7 +15,7 @@ function updateTime() {
     let hongKongCurrent = moment().tz("Asia/Hong_Kong");
     hongKongDate.innerHTML = hongKongCurrent.format("MMMM Do, YYYY");
     hongKongTime.innerHTML = hongKongCurrent.format(
-      "h:mm:ss [<small>]A[</small>]"
+      "h:mm:ss:S [<small>]A[</small>]"
     );
   }
 
@@ -26,7 +26,7 @@ function updateTime() {
     let khartoumCurrent = moment().tz("Africa/Khartoum");
     khartoumDate.innerHTML = khartoumCurrent.format("MMMM Do, YYYY");
     khartoumTime.innerHTML = khartoumCurrent.format(
-      "h:mm:ss [<small>]A[</small>]"
+      "h:mm:ss:S [<small>]A[</small>]"
     );
   }
 }
@@ -44,13 +44,14 @@ function updateCity(event) {
             <h2>${cityName}</h2>
             <div class="date">${cityTime.format("MMMM Do, YYYY")}</div>
           </div>
-          <div class="time">${cityTime.format(
-            "h:mm:ss"
-          )}<small> ${moment().format("A")}</small></div>
-        </div>`;
+          <div class="time">${cityTime.format("h:mm")}<small> ${moment().format(
+    "A"
+  )}</small></div>
+        </div>
+        <a href = "/"> Show All Cities</a>`;
 }
 updateTime();
-setInterval(updateTime, 1000);
+setInterval(updateTime, 1);
 
 let cityElement = document.querySelector("#city");
 cityElement.addEventListener("change", updateCity);
